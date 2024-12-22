@@ -2761,7 +2761,58 @@ ol {
 	color: #2bca31;
 	margin-right: 5px;
 }
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
 
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 499px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  .popup-content h3 {
+    margin-top: 0;
+  }
+
+  .popup-content input,
+  .popup-content textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .popup-content button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .close-popup {
+    background-color: red;
+    margin-top: 10px;
+  }
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1650px) and (max-width: 1920px) {
@@ -2997,6 +3048,11 @@ ol {
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+	.team-section.team-page .ts-item {
+		margin-bottom: 30px;
+		max-width: 446px;
+		max-height: 361px;
+	}
 	.offcanvas-menu-overlay {
 		position: fixed;
 		left: 0;
@@ -3226,11 +3282,22 @@ ol {
 	.search-model-form input {
 		width: 100%;
 	}
+	.ts-item .ts_text h4 {
+		font-size: 16px;
+	}
 }
 
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
+	.ts-item .ts_text h4 {
+		font-size: 8px;
+	}
+	.team-section.team-page .ts-item {
+		margin-bottom: 30px;
+		max-width: 297px;
+        max-height: 236px;
+	}
 	.primary-btn.appoinment-btn {
 		float: none;
 		margin-top: 0;
