@@ -12,6 +12,9 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
@@ -165,11 +168,11 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <input type="text" placeholder="Website">
-                            <textarea placeholder="Comment"></textarea>
+                        <form id="emailForm">
+                            <input type="text" id="name" placeholder="Name" required>
+                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="text" id="website" placeholder="Website">
+                            <textarea id="comment" placeholder="Comment" required></textarea>
                             <button type="submit">Submit</button>
                         </form>
                     </div>
@@ -309,8 +312,62 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
 
-
-
+    <script>
+        (function () {
+            emailjs.init("QBl_EuoIB25XQb2gx"); // Replace with your public key
+            console.log("EmailJS initialized.");
+        })();
+    
+        document.getElementById("emailForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form refresh
+            console.log("Form submitted!");
+    
+            // Collect form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const website = document.getElementById("website").value;
+            const comment = document.getElementById("comment").value;
+    
+            console.log("Collected data:", { name, email, website, comment });
+    
+            // Validation
+            if (!name || !email || !comment) {
+                alert("Please fill out all required fields.");
+                return;
+            }
+    
+            // Prepare EmailJS data
+            const templateParams = {
+                name: name,
+                email: email,
+                website: website,
+                comment: comment,
+            };
+    
+            // Send email
+            emailjs
+                .send("service_5tvh58b", "template_ws5nlcl", templateParams)
+                .then(function (response) {
+                    alert("Email sent successfully!");
+                    console.log("Success:", response.status, response.text);
+                })
+                .catch(function (error) {
+                    alert("Failed to send email. Please try again.");
+                    console.error("Error status:", error.status);
+                    console.error("Error details:", error.text);
+                });
+        });
+    </script>
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "QBl_EuoIB25XQb2gx",
+      });
+   })();
+</script>
 </body>
 
 </html>
