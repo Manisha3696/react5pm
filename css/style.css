@@ -3294,10 +3294,11 @@ ol {
 		font-size: 8px;
 	}
 	.team-section.team-page .ts-item {
-		margin-bottom: 30px;
-		max-width: 297px;
-        max-height: 236px;
-	}
+        margin-bottom: 36px;
+        max-width: 297px;
+        max-height: 242px;
+        margin: 12px 8px;
+    }
 	.primary-btn.appoinment-btn {
 		float: none;
 		margin-top: 0;
